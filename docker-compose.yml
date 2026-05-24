@@ -12,5 +12,14 @@ services:
     volumes:
       - lchat_postgres_data:/var/lib/postgresql/data
 
+  adminer:
+    image: adminer:latest
+    container_name: l-chat-adminer
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+
 volumes:
   lchat_postgres_data:
